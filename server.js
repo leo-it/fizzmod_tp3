@@ -1,6 +1,5 @@
 import express from "express"
 const app = express()
-import fs from 'fs'
 import {
     saludo
 } from './public/js/raiz.js'
@@ -36,8 +35,6 @@ app.get('/info', async (req, res) => {
 })
 
 /*-------------------- ejercicio 4 -----------------*/
-
-console.log("ejercicio 4");
 app.get('/operaciones', (req, res) => {
     operaciones(req, res)
 })
