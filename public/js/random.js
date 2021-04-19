@@ -1,4 +1,4 @@
-export function random(){
+export function random() {
     let array_elements = []
     let arr = [];
     let contador = 0;
@@ -30,7 +30,7 @@ export function random(){
             times: cnt
         })
     }
-    
+
 
     return console.log(arr);
 }
