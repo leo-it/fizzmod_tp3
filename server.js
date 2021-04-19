@@ -1,72 +1,25 @@
-
 import express from "express"
 const app = express()
 import fs from 'fs'
 /*  import {} from './public/js/operaciones.js'
  */
-
+import {saludo} from './public/js/raiz.js'
+import {random} from './public/js/random.js'
 
 /*------------------- ejercicio 1 ------------------------*/
 app.get('/', function (req, res) {
-    //console.log("ruta raiz");
-    let hora = parseInt(new Date().toLocaleTimeString())
-    //console.log(hora);
-    if (hora >= 6 && hora <= 12) {
-        res.json({
-            saludo: 'buenois dias'
-        })
-    } else if (hora >= 13 && hora <= 19) {
-        res.json({
-            saludo: "buenois tardes"
-        })
-    } else {
-        res.json({
-            saludo: "buenois noches"
-        })
-    }
+    res.send({
+        saludo: saludo()
+    })
 })
-
-
 
 /*---------------------- ejercicio 2 ----------------------*/
 app.get('/random', (req, res) => {
-    let array_elements = []
-    let arr = [];
-    let contador = 0;
-    for (let i = 0; i < 1000; i++) {
-        let random = Math.round(Math.random() * (20 - 1)) + 1;
-        /*    res.json({random})*/
-        array_elements.push(random)
-    }
-    array_elements.sort();
 
-    var current = null;
-    var cnt = 0;
-    for (var i = 0; i < array_elements.length; i++) {
-        if (array_elements[i] != current) {
-            if (cnt > 0) {
-                arr.push({
-                    number: current,
-                    times: cnt
-                })
-            }
-            current = array_elements[i];
-            cnt = 1;
-        } else {
-            cnt++;
-        }
-    }
-    if (cnt > 0) {
-        arr.push({
-            number: current,
-            times: cnt
-        })
-    }
     res.send({
-        ok: "random"
+        ok: random()
     })
-
-    return console.log(arr);
+   
 })
 /*------------------- ejercicio 3 -----------------------*/
 console.log('ejercicio 3')
